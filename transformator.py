@@ -8,7 +8,7 @@ def load_old_json(filename):
 
 def save_new_json(filename, data):
     with open(filename, 'w') as f:
-        json.dump(data, f, indent=2)
+        json.dump(data, f)
 
 def transform_json_to_geojson(old_json):
     new_json = {
@@ -20,15 +20,15 @@ def transform_json_to_geojson(old_json):
 
     counter = 0
     for feature in old_json['data']:
-        # limit to 5000 features
-        # if counter > 5000:
-        #     break
+        # limit to 3000 features
+        if counter > 3000:
+            break
 
         new_feature = {
             'type': 'Feature',
             'geometry': {
                 'type': 'Point',
-                'coordinates': [feature['lat'], feature['long']],
+                'coordinates': [feature['long'], feature['lat']],
             },
             'properties': {
                 'radius': feature['radius'],
