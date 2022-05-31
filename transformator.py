@@ -21,8 +21,8 @@ def transform_json_to_geojson(old_json):
     counter = 0
     for feature in old_json['data']:
         # limit to 3000 features
-        if counter > 3000:
-            break
+        # if counter > 3000:
+        #     break
 
         new_feature = {
             'type': 'Feature',
