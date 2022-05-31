@@ -18,7 +18,11 @@ def transform_json_to_geojson(old_json):
         'features': []
     }
 
+    counter = 0
     for feature in old_json['data']:
+        # limit to 5000 features
+        # if counter > 5000:
+        #     break
 
         new_feature = {
             'type': 'Feature',
@@ -31,7 +35,9 @@ def transform_json_to_geojson(old_json):
                 'intensity': feature['intensity'],
             },
         }
+
         new_json['features'].append(new_feature)
+        counter += 1
 
     return new_json
 
