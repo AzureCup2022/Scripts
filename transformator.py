@@ -37,7 +37,9 @@ def transform_json_to_geojson(old_json):
 
 if __name__ == '__main__':
     inpt = sys.argv[1]
+    
+    filename = inpt.split('/')[-1]
 
-    old_json = load_old_json('./data/' + inpt)
+    old_json = load_old_json(inpt)
     new_json = transform_json_to_geojson(old_json)
-    save_new_json('./data/geo_'+ inpt, new_json)
+    save_new_json('./geo_jsons/geo_'+ filename, new_json)
